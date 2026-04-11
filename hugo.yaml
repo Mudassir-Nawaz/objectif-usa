@@ -1,0 +1,156 @@
+baseURL: https://example.org/
+locale: fr-fr
+title: Objectif USA
+
+######################## Menu Configuration
+menus:
+  main:
+    - name: "PRÉSENTATION"
+      url: "#"
+      weight: 10
+      identifier: "presentation"
+      parent: ""
+      
+    - name: "Notre Agence"
+      url: "/about/"
+      parent: "presentation"
+      weight: 10
+      
+    - name: "Le fondateur: Sylvain Perret"
+      url: "/sylvain-perret/"
+      parent: "presentation"
+      weight: 20
+      
+    - name: "Broker: Daphnee Perret Vergeau"
+      url: "/daphnee-perret/"
+      parent: "presentation"
+      weight: 30
+      
+    - name: "Pourquoi Choisir Objectif USA ?"
+      url: "/pourquoi-choisir-objectif-usa/"
+      parent: "presentation"
+      weight: 40
+      
+    - name: "Objectif USA: Le Livre!"
+      url: "/visa-e2-le-livre/"
+      parent: "presentation"
+      weight: 50
+
+    - name: "Services"
+      url: "/services/"
+      weight: 20
+      identifier: "services"
+      parent: ""
+      
+    - name: "Business Broker"
+      url: "/business-broker-floride/"
+      parent: "services"
+      weight: 10
+      
+    - name: "Consulting"
+      url: "/consulting/"
+      parent: "services"
+      weight: 20
+      
+    - name: "Investissement Immobilier USA"
+      url: "https://www.objectifusaimmobilier.com/"
+      parent: "services"
+      weight: 30
+      
+    - name: "Business Plan Pour Visas D'immigration"
+      url: "/business-plan-visa-e2/"
+      parent: "services"
+      weight: 40
+      
+    - name: "Notary Public"
+      url: "/notary-public-francophone-en-floride/"
+      parent: "services"
+      weight: 50
+
+    - name: "CONSEILS"
+      url: "#"
+      weight: 30
+      identifier: "conseils"
+      parent: ""
+      
+    - name: "CONFERENCES EN FRANCE"
+      url: "/conferences/"
+      parent: "conseils"
+      weight: 10
+      
+    - name: "Vivre aux USA"
+      url: "/vivre-aux-usa/"
+      parent: "conseils"
+      weight: 20
+      
+    - name: "Business aux USA"
+      url: "/business-aux-usa/"
+      parent: "conseils"
+      weight: 30
+      
+    - name: "Visa E2: Tout Savoir, Tout Comprendre!"
+      url: "/visa-e2/"
+      parent: "conseils"
+      weight: 40
+      
+    - name: "Le Visa E1: Import/ Export"
+      url: "/visa-e1/"
+      parent: "conseils"
+      weight: 50
+      
+    - name: "Rachat D'Une Entreprise En Floride Et Visa E2"
+      url: "/rachat-dune-entreprise-floride-visa-e2/"
+      parent: "conseils"
+      weight: 60
+      
+    - name: "Tous nos articles sur le VISA E2"
+      url: "/tous-nos-articles-sur-le-visa-e2/"
+      parent: "conseils"
+      weight: 70
+      
+    - name: "Vidéos Objectif USA"
+      url: "/videos/"
+      parent: "conseils"
+      weight: 80
+
+    - name: "RECHERCHE ENTREPRISE"
+      url: "/entreprise-a-vendre-floride/"
+      weight: 40
+      identifier: "recherche-entreprise"
+      
+    - name: "Articles"
+      url: "/article/"
+      weight: 50
+      identifier: "articles"
+
+######################## Site Parameters
+params:
+  settings:
+    logo: "/images/logo.png"
+    cta_url: "/contact/"
+  
+  socials:
+    facebook: "https://www.facebook.com/objectifusa"
+    x: "https://x.com/objectif_usa"
+    instagram: "https://www.instagram.com/usaobjectif/"
+    youtube: "https://www.youtube.com/channel/UCp3rZxbrfO5kGVwaUj336SQ"
+    linkedin: "https://www.linkedin.com/company/objectif-usa/"
+
+######################## Build Configuration
+build:
+  buildStats:
+    enable: true
+  cachebusters:
+    - source: 'assets/notwatching/hugo_stats\.json'
+      target: css
+    - source: '(postcss|tailwind)\.config\.js'
+      target: css
+
+######################## Module Configuration
+module:
+  mounts:
+    - source: assets
+      target: assets
+    - disableWatch: true
+      source: hugo_stats.json
+      target: assets/notwatching/hugo_stats.json

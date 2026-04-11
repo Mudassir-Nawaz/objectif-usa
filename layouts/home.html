@@ -1,0 +1,55 @@
+{{ define "main" }}
+    <section class="mb-12 lg:my-20 max-w-275 mx-auto flex flex-wrap-reverse lg:flex-nowrap lg:items-center">
+        <div class="mt-12 lg:mt-0 mx-5">
+            <h1 class="text-[40px] lg:text-6xl leading-10 lg:leading-15 capitalize text-center lg:text-left mb-4 text-blue font-poppins font-bold">Faciliter votre implantation aux USA</h1>
+            <p class="text-center font-lato leading-7 lg:text-lg lg:text-left lg:leading-9">À travers nos services de business broker, de consulting, de rédaction de business plan, de mise en relation avec des professionnels, notre but est de vous aider à réussir votre implantation aux États-Unis.</p>
+        </div>
+        <div>
+            <img src='{{ "images/us-flag-heart.webp" | relURL }}' alt="Objectif USA, immigration aux USA, visa E2" class=" w-460">
+        </div>
+    </section>
+
+    <section>
+        {{ partial "shared/cta.html" . }}
+    </section>
+
+    <section class="py-9 px-5 lg:pt-16 lg:pb-22 lg:px-0">
+        <div class="container mx-auto">
+            <h2 class="text-3xl lg:text-[40px] text-blue font-poppins uppercase text-center font-bold mb-5">Nos services</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                {{ $consultBg := "images/service-consult.jpg" | relURL }}
+                {{ $brokerBg := "images/service-business-broker.jpg" | relURL }}
+                {{ $redactionBg := "images/service-redaction.jpg" | relURL }}
+                {{ $investementBg := "images/service-investement.jpg" | relURL }}
+                <div class="lg:p-12 my-2.5 mx-5 lg:m-2.5 min-h-55 lg:min-h-62.5 bg-no-repeat bg-center bg-cover service-shadow flex justify-center items-center rounded-[10px] relative bg-[url('{{ $consultBg }}')]">
+                    <span class="absolute inset-0 bg-black/70 rounded-[10px]"></span>
+                    <div class="text-white relative flex justify-center items-center flex-col gap-3">
+                        <i class="fa-solid fa-user-tie text-6xl"></i>
+                        <h4 class="text-xl text-center font-poppins font-bold">Consulting En Implantation/ Expatriation</h4>
+                    </div>
+                </div>
+                <div class="lg:p-12 my-2.5 mx-5 lg:m-2.5 min-h-55 lg:min-h-62.5 bg-no-repeat bg-center bg-cover service-shadow flex justify-center items-center rounded-[10px] relative bg-[url('{{ $brokerBg }}')]">
+                    <span class="absolute inset-0 bg-black/70 rounded-[10px]"></span>
+                    <div class="text-white relative flex justify-center items-center flex-col gap-3">
+                        <i class="fa-solid fa-users text-6xl"></i>
+                        <h4 class="text-xl text-center font-poppins font-bold">Business Broker (Courtier En Affaires)</h4>
+                    </div>
+                </div>
+                <div class="lg:p-12 my-2.5 mx-5 lg:m-2.5 min-h-55 lg:min-h-62.5 bg-no-repeat bg-center bg-cover service-shadow flex justify-center items-center rounded-[10px] relative bg-[url('{{ $redactionBg }}')]">
+                    <span class="absolute inset-0 bg-black/70 rounded-[10px]"></span>
+                    <div class="text-white relative flex justify-center items-center flex-col gap-3">
+                        <i class="fa-solid fa-address-card text-6xl"></i>
+                        <h4 class="text-xl text-center font-poppins font-bold">Rédaction De Business Plan</h4>
+                    </div>
+                </div>
+                <div class="lg:p-12 my-2.5 mx-5 lg:m-2.5 min-h-55 lg:min-h-62.5 bg-no-repeat bg-center bg-cover service-shadow flex justify-center items-center rounded-[10px] relative bg-[url('{{ $investementBg }}')]">
+                    <span class="absolute inset-0 bg-black/70 rounded-[10px]"></span>
+                    <div class="text-white relative flex justify-center items-center flex-col gap-3">
+                        <i class="fa-solid fa-money-bill-1 text-6xl"></i>
+                        <h4 class="text-xl text-center font-poppins font-bold">Investissement Immobilier Résidentiel Ou Commercial</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{{ end }}

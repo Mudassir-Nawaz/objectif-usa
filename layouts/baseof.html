@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ partial "essentials/head.html" . }}
+</head>
+<body>
+    {{ partial "shared/header.html" . }}
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "shared/footer.html" . }}
+
+    {{ partial "essentials/js.html" . }}
+</body>
+</html>

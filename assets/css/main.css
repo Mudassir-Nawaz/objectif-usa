@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "hugo_stats.json";
+
+@theme {
+    --font-lato: 'Lato', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+
+    --color-dark: #1f1f1f;
+    --color-blue: #26384f;
+    --color-red: #df2636;
+    --color-off-white: #e3e9f2;
+    --color-gray: #3a3a3a;
+}
+
+body {
+    @apply text-dark;
+}
+
+/* Submenu indicator styling */
+.submenu-indicator {
+    transition: transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Active submenu state */
+.submenu-open {
+    font-weight: bold;
+}
+
+/* Smooth submenu animation */
+#mobileServicesSubmenu,
+#mobileResourcesSubmenu {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Touch feedback */
+#mobileMenuOverlay li a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    touch-action: manipulation;
+}
+
+.service-shadow {
+    box-shadow: 2px 2px 10px 4px rgba(0,0,0,.2);
+}
