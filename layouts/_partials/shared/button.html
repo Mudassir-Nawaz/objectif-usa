@@ -1,0 +1,7 @@
+{{ if eq "type" "button" }}
+<button class="bg-red rounded-sm text-white font-lato uppercase px-7 py-3">{{ .text }}</button>
+{{ else }}
+<a href="{{ .url }}" class="bg-red rounded-sm text-white font-lato uppercase px-9.75 py-2.75">
+    {{ .text }}
+</a>
+{{ end }}
