@@ -5,6 +5,7 @@ title: Objectif USA
 ######################## Menu Configuration
 menus:
   main:
+  ################## Header
     - name: "PRÉSENTATION"
       url: "#"
       weight: 10
@@ -122,6 +123,71 @@ menus:
       url: "/article/"
       weight: 50
       identifier: "articles"
+
+  # Legal links (footer widget 1)
+  legal:
+    - name: "Mentions Légales"
+      url: "/mentions-legales/"
+      weight: 10
+    - name: "Politique de confidentialité"
+      url: "/politique-de-confidentialite/"
+      weight: 20
+    - name: "Conditions Générales"
+      url: "/conditions-generales/"
+      weight: 30
+  
+  # Popular articles (footer widget 2)
+  articles:
+    - name: "Visa E2 : Tout savoir"
+      url: "/visa-e2/"
+      weight: 10
+    - name: "Carte Verte : Comment l'obtenir ?"
+      url: "/carte-verte/"
+      weight: 20
+    - name: "Immobilier USA : Le Guide"
+      url: "https://www.objectifusaimmobilier.com/investissement-immobilier-usa/"
+      external: true
+      weight: 30
+    - name: "La carte verte grâce au visa EB-5"
+      url: "/eb5/"
+      weight: 40
+    - name: "11 astuces pour rater son immigration aux USA"
+      url: "/immigration-usa/"
+      weight: 50
+    - name: "Business Plan Visa E2"
+      url: "/business-plan-visa-e2/"
+      weight: 60
+    - name: "Rachat d'entreprise et Visa E2"
+      url: "/rachat-dune-entreprise-floride-visa-e2/"
+      weight: 70
+  
+  # Useful links (footer widget 3)
+  links:
+    - name: "Objectif USA Immobilier"
+      url: "https://www.objectifusaimmobilier.com/"
+      external: true
+      weight: 10
+    - name: "Mes articles sur Envie d'Entreprendre"
+      url: "https://www.enviedentreprendre.com/sylvain-perret-mon-oncle-damerique/"
+      external: true
+      weight: 20
+    - name: "Le site de l'immigration US"
+      url: "http://www.uscis.gov/"
+      external: true
+      weight: 30
+    - name: "Ambassade des USA à Paris"
+      url: "https://fr.usembassy.gov"
+      external: true
+      weight: 40
+    - name: "Small Business Administration"
+      url: "https://www.sba.gov/"
+      external: true
+      weight: 50
+    - name: "Plan du site"
+      url: "/sitemap/"
+      weight: 60
+
+
 
 ######################## Site Parameters
 params:

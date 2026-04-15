@@ -1,0 +1,10 @@
+<li class="flex items-centere justify-start gap-3 mt-3 {{ .Params.class }} not-prose">
+    {{ if ne .Params.icon "none" }}
+    <div class="flex justify-start items-center">
+        <i class="fa-regular fa-square-check text-2xl text-red"></i>
+    </div>
+    {{ end }}
+    <span class='{{ if eq .Params.normal "true" }}text-black{{ else }}text-blue font-semibold{{ end }} font-poppins capitalize leading-[1.3em] text-wrap'>
+        {{ .Params.text | safeHTML }}
+    </span>
+</li>

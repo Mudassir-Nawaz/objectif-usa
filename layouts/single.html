@@ -1,0 +1,9 @@
+{{ define "main" }}
+    <section>
+        {{ partial "shared/single_hero.html" (dict "bg" .Params.background "title" .Title) }}
+    </section>
+
+    <section class="max-w-275 mx-auto font-lato prose prose-headings:text-blue lg:prose-lg prose-headings:font-poppins prose-headings:capitalize prose-img:rounded-3xl">
+        {{ .Content }}
+    </section>
+{{ end }}

@@ -1,0 +1,7 @@
+{{ if eq .Params.type "button" }}
+<button class="{{ with .Params.bg }}{{. }}{{ else }}bg-red hover:bg-blue{{ end }} transition-colors duration-300 rounded-sm text-white font-lato uppercase px-7 py-3 {{ .Params.class }} not-prose">{{ .Params.text }}</button>
+{{ else }}
+<a href="{{ .Params.url }}" class="{{ with .Params.bg }}{{ . }}{{ else }}bg-red hover:bg-blue{{ end }} transition-colors duration-300 rounded-sm text-white font-lato uppercase px-9.75 py-2.75 {{ .Params.class }} not-prose">
+    {{ .Params.text }}
+</a>
+{{ end }}

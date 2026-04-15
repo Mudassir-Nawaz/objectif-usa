@@ -1,6 +1,9 @@
 {{ $footer := .Site.Params.footer }}
 {{ $socials := .Site.Params.socials }}
 
+{{ if .Page.Params.cta.enable }}
+{{ partial "shared/cta.html" (dict "heading" .Page.Params.cta.heading "text" .Page.Params.cta.text "class" .Page.Params.cta.class "isSingle" "true") }}
+{{ end }}
 <footer class="site-footer bg-blue text-white" role="contentinfo">
     <div class="site-primary-footer-wrap py-12 md:py-16 px-4 md:px-10">
         <div class="container mx-auto max-w-7xl">
@@ -25,8 +28,8 @@
                             <!-- Legal Links -->
                             <section class="widget">
                                 <div class="text-sm space-y-2">
-                                    {{ range site.Params.legal }}
-                                    <a href="/mentions-legales/" class="text-white hover:text-red transition-colors block font-lato capitalize text-[19px]">
+                                    {{ range site.Menus.legal }}
+                                    <a href="/mentions-legales/" class="text-white hover:text-red transition-colors block font-lato capitalize text-lg">
                                         {{ .Name }}
                                     </a>
                                     {{ end }}
@@ -47,43 +50,11 @@
                                 </h2>
                                 <nav aria-label="Articles populaires">
                                     <ul class="space-y-2 text-sm">
-                                        <li>
-                                            <a href="/visa-e2/" class="text-white hover:text-[#df2636] transition-colors">
-                                                Visa E2 : Tout savoir
+                                        {{ range site.Menus.articles }}
+                                            <a href="/mentions-legales/" class="text-white hover:text-red transition-colors block font-lato capitalize text-lg">
+                                                {{ .Name }}
                                             </a>
-                                        </li>
-                                        <li>
-                                            <a href="/carte-verte/" class="text-white hover:text-[#df2636] transition-colors">
-                                                Carte Verte : Comment l'obtenir ?
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.objectifusaimmobilier.com/investissement-immobilier-usa/" 
-                                               class="text-white hover:text-[#df2636] transition-colors"
-                                               target="_blank" rel="noopener noreferrer">
-                                                Immobilier USA : Le Guide
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/eb5/" class="text-white hover:text-[#df2636] transition-colors">
-                                                La carte verte grâce au visa EB-5
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/immigration-usa/" class="text-white hover:text-[#df2636] transition-colors">
-                                                11 astuces pour rater son immigration aux USA
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/business-plan-visa-e2/" class="text-white hover:text-[#df2636] transition-colors">
-                                                Business Plan Visa E2
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="text-white hover:text-[#df2636] transition-colors">
-                                                Rachat d'entreprise et Visa E2
-                                            </a>
-                                        </li>
+                                        {{ end }}
                                     </ul>
                                 </nav>
                             </section>
@@ -102,46 +73,11 @@
                                 </h2>
                                 <nav aria-label="Liens utiles">
                                     <ul class="space-y-2 text-sm">
-                                        <li>
-                                            <a href="https://www.objectifusaimmobilier.com/" 
-                                               class="text-white hover:text-[#df2636] transition-colors"
-                                               target="_blank" rel="noopener noreferrer">
-                                                Objectif USA Immobilier
+                                        {{ range site.Menus.links }}
+                                            <a href="/mentions-legales/" class="text-white hover:text-red transition-colors block font-lato capitalize text-lg">
+                                                {{ .Name }}
                                             </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.enviedentreprendre.com/sylvain-perret-mon-oncle-damerique/" 
-                                               class="text-white hover:text-[#df2636] transition-colors"
-                                               target="_blank" rel="noopener noreferrer">
-                                                Mes articles sur Envie d'Entreprendre
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://www.uscis.gov/" 
-                                               class="text-white hover:text-[#df2636] transition-colors"
-                                               target="_blank" rel="noopener noreferrer">
-                                                Le site de l'immigration US
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://fr.usembassy.gov" 
-                                               class="text-white hover:text-[#df2636] transition-colors"
-                                               target="_blank" rel="noopener noreferrer">
-                                                Ambassade des USA à Paris
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.sba.gov/" 
-                                               class="text-white hover:text-[#df2636] transition-colors"
-                                               target="_blank" rel="noopener noreferrer">
-                                                Small Business Administration
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="text-white hover:text-[#df2636] transition-colors">
-                                                Plan du site
-                                            </a>
-                                        </li>
+                                        {{ end }}
                                     </ul>
                                 </nav>
                             </section>
@@ -154,9 +90,9 @@
                                         <input type="search" 
                                                name="s" 
                                                placeholder="Rechercher sur le site..." 
-                                               class="w-full px-4 py-2 pr-12 text-gray-900 bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#df2636]">
+                                               class="w-full px-4 py-2 pr-12 text-gray-900 bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-red">
                                         <button type="submit" 
-                                                class="absolute right-0 top-0 h-full px-3 bg-[#4B4F58] text-white rounded-r-md hover:bg-[#df2636] transition-colors"
+                                                class="absolute right-0 top-0 h-full px-3 bg-[#4B4F58] text-white rounded-r-md hover:bg-red transition-colors"
                                                 aria-label="Chercher">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -177,20 +113,22 @@
                                 <h2 class="widget-title text-white text-[18px] capitalize mb-4 font-poppins font-semibold">
                                     Nos coordonnées
                                 </h2>
-                                <div class="space-y-3 text-sm">
+                                <div class="space-y-3 leading-[1.85714285714286] text-white font-lato capitalize text-lg">
                                     <div>
-                                        <strong>Adresse :</strong>
                                         <address class="not-italic mt-1">
+                                            <strong>Adresse :</strong>
                                             3801 Avalon Park East Blvd, Suite 212<br>
                                             Orlando, Florida 32828<br>
                                             USA
                                         </address>
                                     </div>
-                                    <hr class="border-gray-600 my-2">
+                                    <hr class="border-gray-600 my-1">
                                     <div>
-                                        <strong>Email:</strong>
-                                        <a href="mailto:contact@objectif-usa.com" class="text-white hover:text-[#df2636] transition-colors block mt-1">
-                                            contact@objectif-usa.com
+                                        <a href="mailto:contact@objectif-usa.com" class="text-white block mt-1 lowercase">
+                                            <strong class="capitalize">Email:</strong>
+                                            <span class="hover:text-red transition-colors">
+                                                contact@objectif-usa.com
+                                            </span>
                                         </a>
                                     </div>
                                 </div>
@@ -203,10 +141,10 @@
     </div>
 
     <!-- Below Footer - Copyright -->
-    <div class="site-below-footer-wrap border-t border-[#c6dff4] py-4">
+    <div class="site-below-footer-wrap border-t bg-white py-1">
         <div class="container mx-auto max-w-7xl px-4">
             <div class="ast-footer-copyright text-center">
-                <p class="text-sm text-[#26384f]">
+                <p class="text-sm text-blue lg:text-lg">
                     Copyright © {{ now.Year }} Objectif USA
                 </p>
             </div>

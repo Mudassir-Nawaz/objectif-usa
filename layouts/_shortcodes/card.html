@@ -1,0 +1,26 @@
+{{ $reverse := eq .Params.reverse "true" }}
+{{ $noImg := eq .Params.no_image "true" }}
+
+<div class="pt-12 px-5 lg:px-0 lg:pt-22 pb-6 lg:pb-16 {{ if $noImg }}block{{ else }}flex{{ end }} flex-col-reverse items-stretch {{ if $reverse }}lg:flex-row-reverse{{ else }}lg:flex-row{{ end }} gap-y-5 gap-x-10 not-prose">
+    <div class="{{ if $noImg }}w-full{{ else }}lg:w-1/2{{ end }}">
+        {{ with .Params.subheading }}
+        <h5 class="text-xl uppercase text-blue font-poppins leading-[1em] font-bold text-wrap">{{ . }}</h5>
+        {{ end }}
+        {{ with .Params.title }}
+        <h2 class="text-[30px] lg:text-[40px] uppercase text-blue font-poppins leading-[1.3em] font-bold text-wrap">{{ . }}</h2>
+        {{ end }}
+        {{ with .Params.text }}
+        <p class="leading-[1.4] text-dark text-left text-wrap lg:text-lg font-lato mt-5">{{ . | safeHTML }}</p>
+        {{ end }}
+        {{ .Inner }}
+    </div>
+    <div class="lg:w-1/2 relative {{ if .Params.portrait }}mt-35{{ end }}">
+        {{ with .Params.portrait }}
+        <img src="{{ . | relURL }}" alt=".Page.Title" class="absolute left-1/2 -translate-x-1/2 rounded-full size-70 -top-35">
+        {{ end }}
+        {{ $contain := eq .Params.image_contain "true" }}
+        {{ with .Params.image }}
+        <img src="{{ . | relURL }}" alt="{{ $.Page.Title }}" class="rounded-3xl size-full {{ if $contain }}object-contain{{ else }}object-cover{{ end }}">
+        {{ end }}
+    </div>
+</div>

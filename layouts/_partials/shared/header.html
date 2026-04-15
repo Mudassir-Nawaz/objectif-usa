@@ -79,7 +79,7 @@
                         {{ else }}
                             <li class="relative group">
                                 <a href="{{ .URL }}" class="uppercase px-5 py-4.5 text-white">{{ .Name }}</a>
-                                <ul class="dropdown absolute bg-blue min-w-sm left-5 divide-y hidden group-hover:block">
+                                <ul class="dropdown absolute z-50 bg-blue min-w-sm left-5 divide-y hidden group-hover:block">
                                     {{ range .Children }}
                                     <li class="bg-transparent hover:bg-black/30 transition-colors duration-500 cursor-pointer">
                                         <a href="{{ .URL }}" class="py-2.5 px-3 text-white block">{{ .Name }}</a>
@@ -91,7 +91,7 @@
                     {{ end }}
                 </ul>
                 <div class="flex justify-center items-center">
-                    <a href="{{ site.Params.settings.cta_url }}" class="uppercase px-7 py-4.5 bg-red text-white">Contact</a>
+                    <a href="{{ site.Params.settings.cta_url }}" class="uppercase px-7 py-4.5 bg-red text-white hover:bg-white hover:text-black transition-colors duration-300">Contact</a>
                 </div>
             </nav>
         </div>

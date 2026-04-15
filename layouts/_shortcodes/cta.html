@@ -1,11 +1,11 @@
 <!-- CTA Section -->
-<div class='w-full {{ if eq .gradient "true" }}bg-linear-to-r from-0% to-100% from-blue to-red{{ else }}bg-blue{{ end }} pt-9 pb-12 md:py-2.5 {{ .class }}'>
-    <div class='mx-auto px-4 {{ if eq .isSingle "true" }}max-w-290{{ else }}max-w-7xl{{ end }}'>
+<div class='w-screen relative left-1/2 right-1/2 -mx-[50vw] {{ if eq .Params.gradient "true" }}bg-linear-to-r from-0% to-100% from-blue to-red{{ else }}bg-blue{{ end }} pt-9 pb-12 md:py-2.5 {{ .Params.class }} not-prose'>
+    <div class='mx-auto px-4 {{ if eq .Params.isSingle "true" }}max-w-290{{ else }}max-w-6xl{{ end }}'>
         <div class="flex flex-col md:flex-row items-center justify-between gap-8">
             <!-- Left Content - Info List -->
             <div class="flex-1 w-full md:w-auto">
                 <div class="flex flex-col md:flex-row items-center gap-6">
-                    {{ if ne .icon "disable" }}
+                    {{ if ne .Params.icon "disable" }}
                     <!-- Icon -->
                     <div class="shrink-0">
                             <i class="fa-brands fa-angellist text-5xl text-red"></i>
@@ -14,12 +14,17 @@
                     
                     <!-- Text Content -->
                     <div class="text-center md:text-left">
-                        {{ with .heading }}
+                        {{ with .Params.subheading }}
+                        <h2 class="text-xl font-poppins capitalize font-bold text-white mb-2">
+                            {{ . }}
+                        </h2>
+                        {{ end }}
+                        {{ with .Params.heading }}
                         <h2 class="text-3xl md:text-[38px] font-poppins capitalize font-bold text-white mb-2">
                             {{ . }}
                         </h2>
                         {{ end }}
-                        {{ with .text }}
+                        {{ with .Params.text }}
                         <p class="text-white font-lato lg:text-lg">
                             {{ . }}
                         </p>
@@ -29,9 +34,10 @@
             </div>
             
             <!-- Right Content - Button -->
+            {{ $redBtn := eq .Params.btn "red" }}
             <div class="shrink-0 w-full md:w-auto flex justify-center">
                 <a href="{{ site.Params.settings.cta_url }}"
-                   class="px-5 py-2 bg-gray inline-flex mx-auto text-white font-lato justify-between items-center gap-2 hover:bg-blue transition-colors duration-700"
+                   class="px-5 py-2 {{ if $redBtn }}bg-red hover:bg-white hover:text-blue{{ else }}bg-gray hover:bg-blue{{ end }} inline-flex mx-auto text-white font-lato justify-between items-center gap-2 transition-colors duration-300"
                    role="button"
                    aria-label="CONTACTEZ NOUS !">
                     <span class="text-lg">CONTACTEZ NOUS !</span>
