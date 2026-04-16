@@ -221,3 +221,8 @@ module:
     - disableWatch: true
       source: hugo_stats.json
       target: assets/notwatching/hugo_stats.json
+
+######################## Module Configuration
+caches:
+  images:
+    dir: :cacheDir/images
