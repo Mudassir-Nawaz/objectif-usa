@@ -1,2 +1,2 @@
 {{ $centered := eq .Params.center "true" }}
-<h2 class="text-blue font-poppins font-bold text-3xl uppercase lg:text-[40px] leading-[1.3em] mb-5 text-wrap {{ .Params.class }} not-prose {{ if $centered }}text-center{{ end }}">{{ .Params.text }}</h2>
+<h2 class="text-blue font-poppins font-bold {{ if .Params.size }}{{ .Params.size }}{{ else }}text-3xl lg:text-[40px]{{ end }} uppercase leading-[1.3em] mb-5 text-wrap {{ .Params.class }} not-prose {{ if $centered }}text-center{{ end }}">{{ .Params.text }}</h2>

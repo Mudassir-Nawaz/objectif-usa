@@ -1,0 +1,5 @@
+{{ $enable_first := .Params.enable_first | default "no" }}
+
+<div class="faq-accordion space-y-4 not-prose" data-enable-first="{{ $enable_first }}">
+    {{ .Inner }}
+</div>

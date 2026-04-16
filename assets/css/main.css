@@ -14,6 +14,8 @@
     --color-off-white: #e3e9f2;
     --color-gray: #3a3a3a;
     --color-blue-dark: #1a2635;
+    --color-slate: #afc1d959;
+    --color-sky: #C6DFF4;
 }
 
 body {
@@ -47,4 +49,55 @@ body {
 
 .service-shadow {
     box-shadow: 2px 2px 10px 4px rgba(0,0,0,.2);
+}
+
+/* Active button styling - darker background */
+.faq-question-btn.active {
+    background-color: #d1d5db;
+}
+
+.faq-question-btn.active:hover {
+    background-color: #cbd5e1;
+}
+
+/* Icon container */
+.faq-icon-wrapper {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.faq-icon-closed,
+.faq-icon-open {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Icon animations */
+.faq-question-btn.active .faq-icon-closed {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.75);
+}
+
+.faq-question-btn.active .faq-icon-open {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Smooth content animation */
+.faq-answer-content {
+    max-height: 0;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer-content.active {
+    max-height: 2000px;
+}
+
+/* Hover effect */
+.faq-question-btn:hover {
+    background-color: #f3f4f6;
 }

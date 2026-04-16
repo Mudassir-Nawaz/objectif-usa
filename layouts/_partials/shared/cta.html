@@ -14,6 +14,9 @@
                     
                     <!-- Text Content -->
                     <div class="text-center md:text-left">
+                        {{ with .subheading }}
+                        <h4 class="text-white text-xl uppercase font-poppins leading-[1em] font-bold text-wrap">{{ . }}</h4>
+                        {{ end }}
                         {{ with .heading }}
                         <h2 class="text-3xl md:text-[38px] font-poppins capitalize font-bold text-white mb-2">
                             {{ . }}

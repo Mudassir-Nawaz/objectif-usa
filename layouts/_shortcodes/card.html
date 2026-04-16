@@ -1,7 +1,7 @@
 {{ $reverse := eq .Params.reverse "true" }}
 {{ $noImg := eq .Params.no_image "true" }}
 
-<div class="pt-12 px-5 lg:px-0 lg:pt-22 pb-6 lg:pb-16 {{ if $noImg }}block{{ else }}flex{{ end }} flex-col-reverse items-stretch {{ if $reverse }}lg:flex-row-reverse{{ else }}lg:flex-row{{ end }} gap-y-5 gap-x-10 not-prose">
+<div class="pt-12 lg:pt-22 pb-6 lg:pb-16 {{ if $noImg }}block{{ else }}flex{{ end }} {{ if .Params.img_w_text }}flex-col{{ else }}flex-col-reverse{{ end }} items-stretch {{ if $reverse }}lg:flex-row-reverse{{ else }}lg:flex-row{{ end }} gap-y-5 gap-x-10 not-prose">
     <div class="{{ if $noImg }}w-full{{ else }}lg:w-1/2{{ end }}">
         {{ with .Params.subheading }}
         <h5 class="text-xl uppercase text-blue font-poppins leading-[1em] font-bold text-wrap">{{ . }}</h5>
@@ -14,13 +14,20 @@
         {{ end }}
         {{ .Inner }}
     </div>
-    <div class="lg:w-1/2 relative {{ if .Params.portrait }}mt-35{{ end }}">
+    <div class="lg:w-1/2 relative {{ if .Params.portrait }}mt-35{{ end }} {{ if .Params.img_w_text }}flex flex-col justify-center items-center px-10 pb-5 lg:rounded-3xl bg-sky space-y-5{{ end }}">
         {{ with .Params.portrait }}
         <img src="{{ . | relURL }}" alt=".Page.Title" class="absolute left-1/2 -translate-x-1/2 rounded-full size-70 -top-35">
         {{ end }}
         {{ $contain := eq .Params.image_contain "true" }}
+        {{ $size := .Params.img_size }}
         {{ with .Params.image }}
-        <img src="{{ . | relURL }}" alt="{{ $.Page.Title }}" class="rounded-3xl size-full {{ if $contain }}object-contain{{ else }}object-cover{{ end }}">
+        <img src="{{ . | relURL }}" alt="{{ $.Page.Title }}" class="rounded-3xl {{ if $size }}{{ $size }}{{ else }}size-full{{ end }} {{ if $contain }}object-contain{{ else }}object-cover{{ end }}">
+        {{ end }}
+        {{ with .Params.img_w_text }}
+        <div class="flex flex-col gap-y-5 justify-center items-center">
+            <img src="{{ . | relURL }}" alt="{{ $.Page.Title }}" class="size-full">
+            <p class="leading-[1.4] text-dark text-lg font-lato">{{ $.Params.img_text }}</p>
+        </div>
         {{ end }}
     </div>
 </div>

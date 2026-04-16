@@ -2,7 +2,7 @@
 {{ $socials := .Site.Params.socials }}
 
 {{ if .Page.Params.cta.enable }}
-{{ partial "shared/cta.html" (dict "heading" .Page.Params.cta.heading "text" .Page.Params.cta.text "class" .Page.Params.cta.class "isSingle" "true") }}
+{{ partial "shared/cta.html" (dict "heading" .Page.Params.cta.heading "text" .Page.Params.cta.text "class" .Page.Params.cta.class "isSingle" "true" "subheading" .Page.Params.cta.subheading "icon" .Page.Params.cta.icon) }}
 {{ end }}
 <footer class="site-footer bg-blue text-white" role="contentinfo">
     <div class="site-primary-footer-wrap py-12 md:py-16 px-4 md:px-10">

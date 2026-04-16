@@ -1,10 +1,10 @@
 {{ $bg := .bg }}
 {{ if eq $bg "none" }}
-<h1 class="text-blue font-poppins font-bold text-xl capitalize lg:text-[2.5rem] leading-[1.3em] mb-5 text-wrap text-center mt-3 max-w-5xl">{{ .title }}</h1>
+<h1 class="text-blue font-poppins font-bold text-xl capitalize lg:text-[2.5rem] leading-[1.3em] mb-5 text-wrap text-center mt-3 max-w-275">{{ .title }}</h1>
 {{ else }}
 <div class="py-19 px-5 lg:px-0 lg:py-37.5 flex flex-col justify-center items-center bg-no-repeat bg-center bg-cover relative bg-[url('{{ $bg | relURL }}')]">
     <div class="absolute inset-0 bg-black/30"></div>
-    <h3 class="text-white text-xl uppercase font-poppins leading-[1em] font-bold relative">Objectif USA</h3>
-    <h1 class="text-white text-[40px] lg:text-[4.4rem] uppercase font-poppins leading-[1.3em] font-bold relative text-center max-w-5xl">{{ .title }}</h1>
+    <h3 class="text-white text-xl uppercase font-poppins leading-[1em] font-bold relative">{{ .subtitle | default "Objectif USA" }}</h3>
+    <h1 class="text-white text-[40px] lg:text-[4.4rem] uppercase font-poppins leading-[1.3em] font-bold relative text-center max-w-275">{{ .title }}</h1>
 </div>
 {{ end }}

@@ -223,14 +223,99 @@ class MobileSubmenuHandler {
 }
 
 // ============================================
-// 4. INITIALIZATION
+// 4. FAQ ACCORDION SYSTEM
+// ============================================
+class FAQAccordion {
+    constructor() {
+        this.init();
+    }
+    
+    init() {
+        const faqContainers = document.querySelectorAll('.faq-accordion');
+        
+        if (faqContainers.length === 0) return;
+        
+        faqContainers.forEach(container => {
+            this.setupAccordion(container);
+        });
+        
+        log.info('FAQ accordion ready');
+    }
+    
+    setupAccordion(container) {
+        const items = container.querySelectorAll('.faq-item');
+        const enableFirst = container.getAttribute('data-enable-first') === 'yes';
+        
+        // Close all items
+        const closeAllItems = () => {
+            items.forEach(item => {
+                const button = item.querySelector('.faq-question-btn');
+                const content = item.querySelector('.faq-answer-content');
+                if (button && content) {
+                    button.classList.remove('active');
+                    content.classList.remove('active');
+                    button.setAttribute('aria-expanded', 'false');
+                    content.setAttribute('aria-hidden', 'true');
+                    content.style.maxHeight = null;
+                }
+            });
+        };
+        
+        // Open specific item
+        const openItem = (item) => {
+            const button = item.querySelector('.faq-question-btn');
+            const content = item.querySelector('.faq-answer-content');
+            if (button && content) {
+                button.classList.add('active');
+                content.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
+                content.setAttribute('aria-hidden', 'false');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        };
+        
+        // Initialize each item
+        items.forEach((item, index) => {
+            const button = item.querySelector('.faq-question-btn');
+            const content = item.querySelector('.faq-answer-content');
+            
+            if (!button || !content) return;
+            
+            // Set initial state
+            content.style.maxHeight = null;
+            button.setAttribute('aria-expanded', 'false');
+            content.setAttribute('aria-hidden', 'true');
+            
+            // Add click handler
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isActive = button.classList.contains('active');
+                closeAllItems();
+                if (!isActive) {
+                    openItem(item);
+                    log.event(`FAQ opened: ${index + 1}`);
+                }
+            });
+        });
+        
+        // Open first item if enabled
+        if (enableFirst && items.length > 0) {
+            openItem(items[0]);
+        }
+    }
+}
+
+// ============================================
+// 5. INITIALIZATION
 // ============================================
 let drawer = null;
 let submenuHandler = null;
+let faqAccordion = null;
 
 const initAll = () => {
     drawer = new DrawerManager();
     submenuHandler = new MobileSubmenuHandler();
+    faqAccordion = new FAQAccordion();
     
     const overlay = document.getElementById('mobileMenuOverlay');
     if (overlay) {
@@ -257,6 +342,7 @@ if (ENV.isDev) {
     window.__debug = {
         drawer: () => drawer,
         submenuHandler: () => submenuHandler,
+        faqAccordion: () => faqAccordion,
         env: ENV
     };
 }
