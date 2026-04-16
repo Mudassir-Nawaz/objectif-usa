@@ -192,7 +192,7 @@ menus:
 ######################## Site Parameters
 params:
   settings:
-    logo: "/images/logo.png"
+    logo: "images/logo.png"
     cta_url: "/contact/"
     cba_logo: "images/white-cbi-logo.png"
   
