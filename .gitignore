@@ -19,6 +19,7 @@ bin-release/
 
 # Hugo
 public/
+hugo_stats.json
 
 # Backup Files
 *.markdown~
