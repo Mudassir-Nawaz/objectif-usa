@@ -65,14 +65,18 @@ jobs:
           rm "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
           echo "${HOME}/.local/hugo" >> "${GITHUB_PATH}"
       
-      - name: Install TailwindCSS CLI
-        run: |
-          npm install -D tailwindcss @tailwindcss/cli
-          # Or install globally via curl (alternative)
-          # curl -sL https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64 -o "${HOME}/.local/tailwindcss"
-          # chmod +x "${HOME}/.local/tailwindcss"
-          # echo "${HOME}/.local" >> "${GITHUB_PATH}"
+      # - name: Install TailwindCSS CLI
+      #   run: |
+      #     npm install -D tailwindcss @tailwindcss/cli
+      #     # Or install globally via curl (alternative)
+      #     # curl -sL https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64 -o "${HOME}/.local/tailwindcss"
+      #     # chmod +x "${HOME}/.local/tailwindcss"
+      #     # echo "${HOME}/.local" >> "${GITHUB_PATH}"
       
+      - name: Install Node.js dependencies
+        run: |
+          npm ci
+
       - name: Verify installations
         run: |
           echo "Dart Sass: $(sass --version)"
@@ -80,10 +84,6 @@ jobs:
           echo "Hugo: $(hugo version)"
           echo "Node.js: $(node --version)"
           echo "TailwindCSS: $(npx tailwindcss --version)"
-      
-      - name: Install Node.js dependencies
-        run: |
-          npm ci
       
       - name: Configure Git
         run: |
